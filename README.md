@@ -36,7 +36,7 @@ classoption: oneside
 code-block-font-size: \scriptsize
 ---' | cat - 02.md > temp && mv temp 02.md
 
-$ sudo docker run --rm -v $(pwd):/data \                                                                                                                   
+$ docker run --rm -v $(pwd):/data \                                                                                                                   
     -w /data \
     rstropek/pandoc-latex \
     -f markdown \
