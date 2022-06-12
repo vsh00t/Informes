@@ -17,7 +17,11 @@ Procedimiento para la elaboración de informes.
 
 El archivo original es 01.md
 
+`
 $ awk '{gsub("../_resources/",""); print}' 01.md > 02.md; mv ../_resources/* .
+`
+
+`
 $ echo '---                                                                                                                                                 
 title: Reporte No. 1 - Test de Intrusión Externo
 author: []
@@ -35,7 +39,9 @@ book: true
 classoption: oneside
 code-block-font-size: \scriptsize
 ---' | cat - 02.md > temp && mv temp 02.md
+`
 
+`
 $ docker run --rm -v $(pwd):/data \                                                                                                                   
     -w /data \
     rstropek/pandoc-latex \
@@ -47,5 +53,6 @@ $ docker run --rm -v $(pwd):/data \
     -t latex \
     -o Informe.pdf \
     02.md
+ `
  
  Se genera el archivo Informe.pdf
