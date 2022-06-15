@@ -299,7 +299,7 @@ $endif$
 $else$
 $if(beamer)$
 $else$
-\usepackage[margin=1.5cm,includehead=true,includefoot=true,centering,$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+\usepackage[margin=2.5cm,includehead=true,includefoot=true,centering,$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 $endif$
 $if(logo)$
@@ -577,7 +577,7 @@ $if(titlepage-background)$
 $endif$
 $if(geometry)$
 $else$
-\usepackage[margin=1.5cm,includehead=true,includefoot=true,centering]{geometry}
+\usepackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
 $endif$
 $endif$
 
@@ -862,7 +862,7 @@ $else$
   \rfoot[$if(footer-left)$$footer-left$$else$$for(author)$$author$$sep$, $endfor$$endif$]{$if(footer-right)$$footer-right$$else$\thepage$endif$}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0.4pt}
-  \rhead{\includegraphics[width=3cm]{logo.png}}
+  \rhead{\resizebox{20mm}{10mm}{\includegraphics{logo.png}}}
 }
 \pagestyle{eisvogel-header-footer}
 $if(page-background)$
