@@ -15,15 +15,16 @@ Procedimiento para la elaboración de informes.
 3. Elegir un directorio para guardar el archivo markdown. 
 4. Una vez generado el archivo exportado, desde linux o mac hacer lo siguiente:
 
-El archivo original es 01.md
+Entrar al directorio donde está el archivo markdown y ejecutar el siguiente script. 
 
-`
-$ awk '{gsub("../_resources/",""); print}' 01.md > 02.md; mv ../_resources/* .
-`
+```bash
+#!/bin/bash
 
-`
-$ echo '---                                                                                                                                                 
-title: Reporte No. 1 - Test de Intrusión Externo
+read -p "Ingresa el título del documento: " title
+awk '{gsub("../_resources/",""); print}' *.md > reporte.md; mv ../_resources/* .
+cat << EOF >> reporte.md
+---
+title: $title
 author: []
 date:
 subject: Markdown
@@ -38,21 +39,8 @@ titlepage-rule-height: 2
 book: true
 classoption: oneside
 code-block-font-size: \scriptsize
----' | cat - 02.md > temp && mv temp 02.md
-`
+---
+EOF
 
-`
-$ docker run --rm -v $(pwd):/data \                                                                                                                   
-    -w /data \
-    rstropek/pandoc-latex \
-    -f markdown \
-    --from markdown+yaml_metadata_block+raw_html \
-    --template https://raw.githubusercontent.com/vsh00t/Informes/main/eisvogel.tex \
-    --table-of-contents \
-    --toc-depth 6 \
-    -t latex \
-    -o Informe.pdf \
-    02.md
- `
- 
- Se genera el archivo Informe.pdf
+docker run --rm -v $(pwd):/data  -w /data  rstropek/pandoc-latex  -f markdown  --from markdown+yaml_metadata_block  --template https://raw.githubusercontent.com/vsh00t/Informes/main/eisvogel.tex  --table-of-contents  --toc-depth 6  -t latex  -o Informe.pdf reporte.md
+```
