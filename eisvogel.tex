@@ -995,7 +995,7 @@ $if(toc-title)$
   \frametitle{$toc-title$}
 $endif$
   \tableofcontents[hideallsubsections]
-  \afterpage{\blankpage}
+  \newpage
 \end{frame}
 $if(toc-own-page)$
 \newpage
@@ -1007,7 +1007,7 @@ $if(colorlinks)$
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents
-\afterpage{\blankpage}
+\newpage
 $if(toc-own-page)$
 \newpage
 $endif$
